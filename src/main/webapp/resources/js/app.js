@@ -163,9 +163,19 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
-      // TODO: get data from inputs and show them in summary
-    }
+      function showSummary() {
 
+        document.getElementById('summary-quantity-category').textContent = document.getElementById('quantity').value + " " + document.getElementById('category').value;
+        document.getElementById('summary-institution').textContent = 'Dla fundacji: ' + document.getElementById('institution').value + " w " + document.getElementById('city').value;
+        document.getElementById('summary-street').textContent = document.getElementById('street').value;
+        document.getElementById('summary-city').textContent = document.getElementById('city').value;
+        document.getElementById('summary-zipCode').textContent = document.getElementById('zipCode').value;
+        document.getElementById('summary-phone').textContent = document.getElementById('phone').value;
+        document.getElementById('summary-pickUpDate').textContent = document.getElementById('pickUpDate').value;
+        document.getElementById('summary-pickUpTime').textContent = document.getElementById('pickUpTime').value;
+        document.getElementById('summary-pickUpComment').textContent = document.getElementById('pickUpComment').value;
+      }
+    }
   }
   const form = document.querySelector(".form--steps");
   if (form !== null) {

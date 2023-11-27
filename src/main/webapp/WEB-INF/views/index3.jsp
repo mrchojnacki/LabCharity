@@ -1,17 +1,31 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ include file="header.jsp" %>
-<link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
 
 
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="slogan container container--90">
+        <div class="slogan--item">
+            <h1>
+                <a href="/form">Zacznij pomagać!<br/>
+                Oddaj niechciane rzeczy w zaufane ręce</a>
+            </h1>
+        </div>
+    </div>
+</header>
 
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>${bagsSum}</em>
+            <em th:text="${bagsSum}"></em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -19,7 +33,7 @@
         </div>
 
         <div class="stats--item">
-            <em>${donationsCount}</em>
+            <em th:text="${donationsCount}"></em>
             <h3>Przekazanych darów</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
@@ -62,9 +76,9 @@
         <h2>O nas</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
             optio esse quisquam illo omnis.</p>
-        <img src="<c:url value="resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
+        <img th:src="@{/resources/images/signature.svg}" class="about-us--text-signature" alt="Signature"/>
     </div>
-    <div class="about-us--image"><img src="<c:url value="resources/images/about-us.jpg"/>" alt="People in circle"/>
+    <div class="about-us--image"><img th:src="@{resources/images/about-us.jpg}" alt="People in circle"/>
     </div>
 </section>
 
@@ -78,19 +92,18 @@
 
         <ul class="help--slides-items">
             <li>
-                <c:forEach items="${institutions}" var="institution" varStatus="index">
+            <c:forEach items="${institutions}" var="institution" varStatus="index">
                 <div class="col">
                     <div class="title">Fundacja "${institution.name}"</div>
                     <div class="subtitle">Cel i misja: ${institution.description}</div>
                 </div>
-                    ${index.count % 2 == 0 ? '</li><li>' :  ''}
-                    ${index.last ? '</li>' : ''}
-                </c:forEach>
+                ${index.count % 2 == 0 ? '</li><li>' :  ''}
+                ${index.last ? '</li>' : ''}
+            </c:forEach>
         </ul>
     </div>
 
 </section>
-<%@ include file="footer.jsp" %>
-
+<div th:replace="footer :: footer"></div>
 </body>
 </html>
