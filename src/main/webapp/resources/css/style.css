@@ -645,6 +645,12 @@ form .form-group--checkbox .description .title {
   margin-bottom: 5px;
 }
 
+.error {
+  color: red;
+  font-weight: bold;
+
+}
+
 /* line 96, scss/modules/_forms.scss */
 form .form-group--checkbox .description .subtitle {
   font-family: 'Merriweather', serif;

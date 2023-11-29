@@ -16,12 +16,16 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <sec:authorize access="isAuthenticated()">
-            <li><a href="/logout" class="btn btn--small btn--without-border">Wyloguj</a></li>
+                <form action="<c:url value="/logout"/>" method="post">
+                    <input class="btn btn--small btn--without-border" type="submit" value="Wyloguj">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </form>
+            <%--<li><a href="/logout" class="btn btn--small btn--without-border">Wyloguj</a></li>--%>
             </sec:authorize>
-            <c:if test="${sec:isAnonymous()}">
+            <sec:authorize access="isAnonymous()">
             <li><a href="/login" class="btn btn--small btn--without-border">Zaloguj</a></li>
-            <li><a href="#" class="btn btn--small btn--highlighted">Załóż konto</a></li>
-            </c:if>
+            <li><a href="/register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+            </sec:authorize>
         </ul>
 
         <ul>

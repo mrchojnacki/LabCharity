@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -15,24 +16,30 @@
 <body>
 <%@ include file="header.jsp" %>
 
-
 <section class="login-page">
-    <h2>Zaloguj się</h2>
-    <form method="post" action="/login">
+    <h2>Załóż konto</h2>
+    <form:form action="/register" modelAttribute="register" method="post">
         <div class="form-group">
-            <input type="email" name="username" placeholder="Email" />
+            <form:input path="username" id="username" value="${username}" placeholder="Nazwa Użytkownika" />
+            <form:errors path="username" cssClass="error"/>
         </div>
         <div class="form-group">
-            <input type="password" name="password" placeholder="Hasło" />
-            <a href="#" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
+            <form:input path="email" type="email" value="${email}" id="email" placeholder="Email" />
+            <form:errors path="email" cssClass="error"/>
+        </div>
+        <div class="form-group">
+            <form:input path="password" type="password" id="password" placeholder="Hasło" />
+        </div>
+        <div class="error">${passwordError}</div>
+        <div class="form-group">
+            <input type="password" name="password2" placeholder="Powtórz hasło" />
         </div>
 
         <div class="form-group form-group--buttons">
-            <a href="#" class="btn btn--without-border">Załóż konto</a>
-            <div><input type="submit" value="Zaloguj się"/></div>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <a href="/login" class="btn btn--without-border">Zaloguj się</a>
+            <button class="btn" type="submit">Załóż konto</button>
         </div>
-    </form>
+    </form:form>
 </section>
 
 <footer>
@@ -48,7 +55,11 @@
             </div>
 
             <div class="form-group">
-                <textarea name="message" placeholder="Wiadomość" rows="1"></textarea>
+            <textarea
+                    name="message"
+                    placeholder="Wiadomość"
+                    rows="1"
+            ></textarea>
             </div>
 
             <button class="btn" type="submit">Wyślij</button>
@@ -57,8 +68,12 @@
     <div class="bottom-line">
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <div class="bottom-line--icons">
-            <a href="#" class="btn btn--small"><img src="images/icon-facebook.svg"/></a>
-            <a href="#" class="btn btn--small"><img src="images/icon-instagram.svg"/></a>
+            <a href="#" class="btn btn--small"
+            ><img src="images/icon-facebook.svg"
+            /></a>
+            <a href="#" class="btn btn--small"
+            ><img src="images/icon-instagram.svg"
+            /></a>
         </div>
     </div>
 </footer>

@@ -7,20 +7,20 @@ function updateSummary() {
             categoryValue = checkboxes[i].id;
         }
     }
-    let selectedInstitution = " ";
-    let institutionCheckBoxes = document.getElementByName('institution');
+    let selectedInstitution = document.getElementById("institution");
+ /*   let institutionCheckBoxes = document.getElementByName('institution');
     for (var i = 0; i < institutionCheckBoxes.length; i++) {
         if (institutionCheckBoxes[i].checked) {
             selectedInstitution = institutionCheckBoxes[i].id;
         }
-    }
-/*
-    let institutionOption = selectedInstitution.options[selectElement.selectedIndex].firstChild.data;
-*/
+    }*/
+
+    let institutionOption = selectedInstitution.options[selectedInstitution.selectedIndex].firstChild.data;
+
 
 
     document.getElementById('summary-quantity-category').textContent = document.getElementById('quantity').value + " " + categoryValue;
-    document.getElementById('summary-institution').textContent = 'Dla fundacji: ' + selectedInstitution + " w " + document.getElementById('city').value;
+    document.getElementById('summary-institution').textContent = 'Dla fundacji: ' + institutionOption + " w " + document.getElementById('city').value;
     document.getElementById('summary-street').textContent = document.getElementById('street').value;
     document.getElementById('summary-city').textContent = document.getElementById('city').value;
     document.getElementById('summary-zipCode').textContent = document.getElementById('zipCode').value;
