@@ -5,7 +5,6 @@ import pl.coderslab.charity.Donation.DonationEntity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "Category")
@@ -15,6 +14,7 @@ public class CategoryEntity {
     private Long id;
 
     private String name;
+
     @ManyToMany
     @JoinTable (name = "donations_categories",
             joinColumns = @JoinColumn(name = "donation_id"),
@@ -24,18 +24,6 @@ public class CategoryEntity {
     @Override
     public String toString() {
         return name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CategoryEntity that)) return false;
-        return name.equals(that.name) && Objects.equals(donations, that.donations);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, donations);
     }
 
     public long getId() {

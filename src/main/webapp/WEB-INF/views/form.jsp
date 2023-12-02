@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -21,7 +22,7 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">
-                Witaj
+                Witaj <sec:authentication property="principal.username" />
                 <ul class="dropdown">
                     <li><a href="#">Profil</a></li>
                     <li><a href="#">Moje zbiórki</a></li>
@@ -92,7 +93,6 @@
             <form:form method="POST"
                        action="/addDonation" modelAttribute="donation">
 
-            <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
                 <form:checkbox path="category" name="category" value="${categories[0]}" id="ubrania, które nadają się do ponownego użycia"/>
@@ -120,7 +120,6 @@
                 </div>
             </div>
 
-            <!-- STEP 2 -->
             <div data-step="2">
                 <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
 
@@ -140,7 +139,6 @@
 
 
 
-            <!-- STEP 4 -->
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
@@ -158,7 +156,6 @@
                 </div>
             </div>
 
-            <!-- STEP 5 -->
             <div data-step="4">
                 <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
 
@@ -219,7 +216,6 @@
                 </div>
             </div>
 
-            <!-- STEP 6 -->
             <div data-step="5">
                 <h3>Podsumowanie Twojej darowizny</h3>
 

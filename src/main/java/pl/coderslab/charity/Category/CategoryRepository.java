@@ -8,5 +8,4 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> {
-
 }

@@ -18,33 +18,41 @@ public class DonationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NumberFormat
     @Min(value = 1)
     private Integer quantity;
+
     @ManyToOne(cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             })
     @JoinColumn(name = "category_id")
     private CategoryEntity category;
+
     @ManyToOne(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })
     @JoinColumn(name = "institution_id")
     private InstitutionEntity institution;
+
     @NotNull
     @Size(min = 2)
     private String street;
+
     @Size(min = 2)
     private String city;
+
     @Pattern(regexp = "\\d{2}-\\d{3}")
     private String zipCode;
+
     @Future
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
 
     private LocalTime pickUpTime;
+
     @Column(columnDefinition="TEXT")
     private String pickUpComment;
 

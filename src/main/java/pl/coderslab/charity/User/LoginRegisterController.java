@@ -1,7 +1,5 @@
 package pl.coderslab.charity.User;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +11,14 @@ import javax.validation.Valid;
 import java.util.HashSet;
 
 @Controller
-public class LoginController {
+public class LoginRegisterController {
 
     private final UserServiceImpl userService;
-    @Autowired
-    private PasswordEncoder bCryptPasswordEncoder;
+    private final PasswordEncoder bCryptPasswordEncoder;
 
-    public LoginController(UserServiceImpl userService) {
+    public LoginRegisterController(UserServiceImpl userService, PasswordEncoder bCryptPasswordEncoder) {
         this.userService = userService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)

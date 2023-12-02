@@ -34,7 +34,6 @@ public class DonationController {
         sess.setAttribute("categories", categoryRepository.findAll());
         System.out.println(model.asMap().get("categories"));
         sess.setAttribute("institutions", institutionRepository.findAll());
-
         return "form";
     }
 
