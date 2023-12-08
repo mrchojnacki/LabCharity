@@ -88,7 +88,6 @@
         <form method="POST"
               th:action="@{/addDonation}" th:object="${donation}">
 
-            <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
                 <div class="form-group form-group--checkbox" th:each="category : ${categories}">
@@ -106,7 +105,6 @@
                 </div>
             </div>
 
-            <!-- STEP 2 -->
             <div data-step="2">
                 <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
 
@@ -123,7 +121,6 @@
                 </div>
             </div>
 
-            <!-- STEP 4 -->
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
                 <div class="form-group form-group--checkbox" th:each="institution : ${institutions}">
@@ -135,6 +132,7 @@
                             <div class="subtitle" th:text="${'Cel i misja: ' + institution.description}"></div>
                         </span>
                     </label>
+                </div>
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
@@ -142,7 +140,6 @@
                 </div>
             </div>
 
-            <!-- STEP 5 -->
             <div data-step="4">
                 <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
 

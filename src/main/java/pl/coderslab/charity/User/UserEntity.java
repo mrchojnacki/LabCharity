@@ -25,6 +25,17 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<RoleEntity> roles;
 
+    public UserEntity() {
+    }
+
+    public UserEntity(Long id, String username, String email, String password, Set<RoleEntity> roles) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
     public Long getId() {
         return id;
     }
